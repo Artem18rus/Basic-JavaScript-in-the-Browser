@@ -2,7 +2,6 @@ const value = document.querySelectorAll('.hole');
 console.log(value);
 const dead = document.getElementById('dead');
 const lost = document.getElementById('lost');
-//console.log(lost);
 
 for(let index = 0; index < 9; index++) {
   value[index].onclick = function() {
