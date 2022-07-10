@@ -1,7 +1,7 @@
 const image = document.getElementById('cookie');
 const counter = document.getElementById('clicker__counter');
 const speed = document.getElementById('clicker__speed');
-//console.log(clicker__counter)
+console.log(clicker__counter)
 
 function clickAction() {
   counter.textContent ++;
