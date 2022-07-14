@@ -1,4 +1,3 @@
-
 const tab = Array.from(document.querySelectorAll('.tab'));
 const tabContent = Array.from(document.querySelectorAll('.tab__content'));
 
