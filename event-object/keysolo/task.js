@@ -17,6 +17,22 @@ class Game {
   }
 
   registerEvents() {
+    document.addEventListener('keydown', (event) => {
+      const symbolOne = Array.from(document.querySelectorAll('.symbol'));
+      let idx = symbolOne.findIndex((value) => value.classList.contains('symbol_current'));
+        if(symbolOne[idx].textContent == event.key.toLowerCase()) {
+          symbolOne[idx].classList.remove('symbol_current');
+            if(idx !== symbolOne.length-1) {
+              symbolOne[idx+1].classList.add('symbol_current');
+            } else {
+              idx = 0;
+            }
+          this.success();
+        } else {
+          this.fail();
+          }
+    })
+
     /*
       TODO:
       Написать обработчик события, который откликается
