@@ -9,9 +9,9 @@ fontSize.forEach((item) => {
       const parent = item.closest('.book');
       parent.classList.remove('book_fs-big');
       parent.classList.remove('book_fs-small');
-        if(index == 0) {
+        if(index === 0) {
           parent.classList.add('book_fs-big');
-        } else if(index == 2) {
+        } else if(index === 2) {
           parent.classList.add('book_fs-small');
         }
   })
@@ -30,11 +30,11 @@ colorText.forEach((item) => {
       parent.classList.remove('text_color_black');
       parent.classList.remove('text_color_gray');
       parent.classList.remove('text_color_whitesmoke');
-        if(index == 0) {
+        if(index === 0) {
           parent.classList.add('text_color_black');
-        } else if(index == 1) {
+        } else if(index === 1) {
           parent.classList.add('text_color_gray');
-        } else if(index == 2) {
+        } else {
           parent.classList.add('text_color_whitesmoke');
         }
   })
@@ -53,11 +53,11 @@ colorBg.forEach((item) => {
       parent.classList.remove('bg_color_black');
       parent.classList.remove('bg_color_gray');
       parent.classList.remove('bg_color_white');
-        if(index == 0) {
+        if(index === 0) {
           parent.classList.add('bg_color_black');
-        } else if(index == 1) {
+        } else if(index === 1) {
           parent.classList.add('bg_color_gray');
-        } else if(index == 2) {
+        } else {
           parent.classList.add('bg_color_white');
         }
   })
