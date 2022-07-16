@@ -2,7 +2,6 @@ const rotatorСase = Array.from(document.querySelectorAll('.rotator__case'));
 
 let timerId = setInterval(() => {
   let index = rotatorСase.findIndex((value) => value.classList.contains('rotator__case_active'));
-
     if(rotatorСase[index].classList.contains('rotator__case_active'))
       rotatorСase[index].classList.remove('rotator__case_active');
         if(index == rotatorСase.length-1) {
