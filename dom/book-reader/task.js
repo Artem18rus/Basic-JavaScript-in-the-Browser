@@ -10,15 +10,20 @@ fontSize.forEach((item) => {
       parent.classList.remove('book_fs-big');
       parent.classList.remove('book_fs-small');
         if(index === 0) {
-          parent.classList.add('book_fs-big');
-        } else if(index === 2) {
           parent.classList.add('book_fs-small');
+        } else if(index === 2) {
+          parent.classList.add('book_fs-big');
         }
   })
 })
 
 const colorText = Array.from(document.querySelectorAll('.color'));
 colorText.splice(3, 3);
+
+const bookContent = document.querySelector('.book__content');
+console.log(bookContent);
+
+
 colorText.forEach((item) => {
   item.addEventListener('click', (event) => {
     event.preventDefault();
@@ -26,16 +31,12 @@ colorText.forEach((item) => {
       colorText[idx].classList.remove('color_active');
       item.classList.add('color_active');
     let index = colorText.findIndex((item) => item.classList.contains('color_active'));
-      const parent = item.closest('.book');
-      parent.classList.remove('text_color_black');
-      parent.classList.remove('text_color_gray');
-      parent.classList.remove('text_color_whitesmoke');
         if(index === 0) {
-          parent.classList.add('text_color_black');
+          bookContent.style.color = '#000'
         } else if(index === 1) {
-          parent.classList.add('text_color_gray');
+          bookContent.style.color = 'grey'
         } else {
-          parent.classList.add('text_color_whitesmoke');
+          bookContent.style.color = 'whitesmoke'
         }
   })
 })
@@ -49,16 +50,12 @@ colorBg.forEach((item) => {
       colorBg[idx].classList.remove('color_active');
       item.classList.add('color_active');
     let index = colorBg.findIndex((item) => item.classList.contains('color_active'));
-      const parent = item.closest('.book');
-      parent.classList.remove('bg_color_black');
-      parent.classList.remove('bg_color_gray');
-      parent.classList.remove('bg_color_white');
         if(index === 0) {
-          parent.classList.add('bg_color_black');
+          bookContent.style.background = '#000'
         } else if(index === 1) {
-          parent.classList.add('bg_color_gray');
+          bookContent.style.background = 'grey'
         } else {
-          parent.classList.add('bg_color_white');
+          bookContent.style.background = 'whitesmoke'
         }
   })
 })
