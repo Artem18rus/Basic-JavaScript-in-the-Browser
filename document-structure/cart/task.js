@@ -21,24 +21,38 @@ const productImage = document.querySelectorAll('.product__image');
 
 productAdd.forEach((item, idx) => {
   item.addEventListener('click', (event) => {
-    let dataId = (product[idx].getAttribute('data-id'));
 
+    let dataId = (product[idx].getAttribute('data-id'));
     let parent = productImage[idx].closest('.product');
     let parental = parent.querySelector('.product__image')
     let imgNeed = parental.getAttribute('src');
 
-    let meaning = productQuantityValue[idx].outerText;
-
-    cartProducts.innerHTML+=`
-    <div class="cart__product" data-id=${dataId}>
-      <img class="cart__product-image" src=${imgNeed}>
-      <div class="cart__product-count">${meaning}</div>
-    </div>`;
+    let meaning = Number(productQuantityValue[idx].outerText);
     
-    // let cartProduct = Array.from(document.querySelectorAll('.cart__product'));
-    //   // for(let i = 0; i < cartProduct.length; i++) {
-    //   //   if(cartProduct[i].getAttribute('data-id') == dataId) {
-
-    //   // }
+    if(document.querySelectorAll('.cart__product').length == 0) {
+      cartProducts.insertAdjacentHTML('beforeend', `
+      <div class="cart__product" data-id=${dataId}>
+        <img class="cart__product-image" src=${imgNeed}>
+        <div class="cart__product-count">${meaning}</div>
+      </div>
+      `);
+    } else {
+        let cartProduct = Array.from(document.querySelectorAll('.cart__product'));
+        let coincidence = cartProduct.find(el => {
+          return el.dataset.id == event.target.closest('.product').dataset.id;
+        });
+          if(!coincidence) {
+            cartProducts.insertAdjacentHTML('beforeend', `
+            <div class="cart__product" data-id=${dataId}>
+              <img class="cart__product-image" src=${imgNeed}>
+              <div class="cart__product-count">${meaning}</div>
+            </div>
+            `);
+          } else {
+              let cartProductCount = Number(coincidence.querySelector('.cart__product-count').outerText);
+              let total = cartProductCount + meaning;
+              cartProductCount = total;
+          }
+      }
   })
 })
