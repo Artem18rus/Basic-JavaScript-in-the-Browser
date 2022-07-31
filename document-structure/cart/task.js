@@ -40,7 +40,6 @@ productAdd.forEach((item, idx) => {
         `);
       } else {
         let cartProductCount = coincidence.querySelector('.cart__product-count');
-        console.log(cartProductCount);
         cartProductCount.innerText = +cartProductCount.outerText + meaning;
       }
   })
