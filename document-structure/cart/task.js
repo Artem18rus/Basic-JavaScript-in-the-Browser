@@ -28,31 +28,20 @@ productAdd.forEach((item, idx) => {
     let imgNeed = parental.getAttribute('src');
 
     let meaning = Number(productQuantityValue[idx].outerText);
-    
-    if(document.querySelectorAll('.cart__product').length == 0) {
-      cartProducts.insertAdjacentHTML('beforeend', `
-      <div class="cart__product" data-id=${dataId}>
-        <img class="cart__product-image" src=${imgNeed}>
-        <div class="cart__product-count">${meaning}</div>
-      </div>
-      `);
-    } else {
-        let cartProduct = Array.from(document.querySelectorAll('.cart__product'));
-        let coincidence = cartProduct.find(el => {
-          return el.dataset.id == event.target.closest('.product').dataset.id;
-        });
-          if(!coincidence) {
-            cartProducts.insertAdjacentHTML('beforeend', `
-            <div class="cart__product" data-id=${dataId}>
-              <img class="cart__product-image" src=${imgNeed}>
-              <div class="cart__product-count">${meaning}</div>
-            </div>
-            `);
-          } else {
-              let cartProductCount = Number(coincidence.querySelector('.cart__product-count').outerText);
-              let total = cartProductCount + meaning;
-              cartProductCount = total;
-          }
+
+    let cartProduct = Array.from(document.querySelectorAll('.cart__product'));
+    let coincidence = cartProduct.find(el => el.dataset.id == event.target.closest('.product').dataset.id);
+      if(!coincidence) {
+        cartProducts.insertAdjacentHTML('beforeend', `
+        <div class="cart__product" data-id=${dataId}>
+          <img class="cart__product-image" src=${imgNeed}>
+          <div class="cart__product-count">${meaning}</div>
+        </div>
+        `);
+      } else {
+        let cartProductCount = coincidence.querySelector('.cart__product-count');
+        console.log(cartProductCount);
+        cartProductCount.innerText = +cartProductCount.outerText + meaning;
       }
   })
 })

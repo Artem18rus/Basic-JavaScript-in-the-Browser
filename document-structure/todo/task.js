@@ -4,7 +4,7 @@ const tasksAdd = document.querySelector('.tasks__add');
 
 tasksAdd.addEventListener('click', (event) => {
   event.preventDefault();
-  if(taskInput.value.trim().length > 0) {
+  if(taskInput.value.trim()) {
     tasksList.insertAdjacentHTML('beforeend', `
       <div class="task">
         <div class="task__title">

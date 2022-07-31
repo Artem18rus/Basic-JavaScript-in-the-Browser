@@ -6,7 +6,7 @@ hasTooltip.forEach((item) => {
     
     const tooltipActive = document.querySelectorAll('.tooltip_active')[0];
 
-    if (tooltipActive !== undefined) {
+    if (tooltipActive) {
       tooltipActive.classList.remove('tooltip_active');
         if (tooltipActive.textContent == item.title) {
         return false;
