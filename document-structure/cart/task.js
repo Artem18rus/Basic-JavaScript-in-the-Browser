@@ -7,7 +7,6 @@ productQuantityControlDec.forEach((item, idx) => {
     productQuantityValue[idx].textContent == 1 ? false : productQuantityValue[idx].textContent--;
   })
 })
-
 productQuantityControlInc.forEach((item, idx) => {
   item.addEventListener('click', (event) => {
     productQuantityValue[idx].textContent++;
@@ -21,16 +20,14 @@ const productImage = document.querySelectorAll('.product__image');
 
 productAdd.forEach((item, idx) => {
   item.addEventListener('click', (event) => {
+    const dataId = (product[idx].getAttribute('data-id'));
+    const parent = productImage[idx].closest('.product');
+    const parental = parent.querySelector('.product__image')
+    const imgNeed = parental.getAttribute('src');
+    const meaning = Number(productQuantityValue[idx].outerText);
 
-    let dataId = (product[idx].getAttribute('data-id'));
-    let parent = productImage[idx].closest('.product');
-    let parental = parent.querySelector('.product__image')
-    let imgNeed = parental.getAttribute('src');
-
-    let meaning = Number(productQuantityValue[idx].outerText);
-
-    let cartProduct = Array.from(document.querySelectorAll('.cart__product'));
-    let coincidence = cartProduct.find(el => el.dataset.id == event.target.closest('.product').dataset.id);
+    const cartProduct = Array.from(document.querySelectorAll('.cart__product'));
+    const coincidence = cartProduct.find(el => el.dataset.id == event.target.closest('.product').dataset.id);
       if(!coincidence) {
         cartProducts.insertAdjacentHTML('beforeend', `
         <div class="cart__product" data-id=${dataId}>
@@ -39,7 +36,7 @@ productAdd.forEach((item, idx) => {
         </div>
         `);
       } else {
-        let cartProductCount = coincidence.querySelector('.cart__product-count');
+        const cartProductCount = coincidence.querySelector('.cart__product-count');
         cartProductCount.innerText = +cartProductCount.outerText + meaning;
       }
   })
