@@ -3,7 +3,7 @@ let xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://netology-slow-rest.herokuapp.com');
 
 xhr.addEventListener('readystatechange', (event) => {
-  if(xhr.readyState === xhr.DONE) {
+  if(xhr.readyState === xhr.DONE && xhr.status === 200) {
     const loader = document.querySelector('.loader');
     loader.classList.remove('loader_active');
     const items = document.getElementById('items');
